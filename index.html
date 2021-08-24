@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>动漫轮播图</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <ul id="ulid"></ul>
+  <script>
+    var img_arr = new Array()
+    var ulid = document.getElementById("ulid")
+    for (var i = 1; i < 5; i++) {
+      var ul_li = document.createElement('li')
+      var ul_img = document.createElement('img')
+      ul_img.src = "img/" + i + ".jpg"
+      ul_li.appendChild(ul_img)
+      img_arr.push(ul_li)
+    }
+    next_img()
+    setInterval(next_img, 1500)
+
+    function next_img() {
+      for (var i = 0; i < img_arr.length; i++) {
+        ulid.appendChild(img_arr[i])
+        console.log(img_arr[i])
+      }
+      img_arr[0].style.position = 'absolute'
+      img_arr[0].style.left = '0px'
+      img_arr[0].style.transform = 'scale(1)'
+      img_arr[1].style.position = 'absolute'
+      img_arr[1].style.left = '600px'
+      img_arr[1].style.transform = 'scale(1)'
+      img_arr[3].style.transform = 'scale(1.3)'
+      img_arr[3].style.position = 'absolute'
+      img_arr[3].style.left = '300px'
+      var last = img_arr[3]
+      img_arr.unshift(last)
+      img_arr.pop()
+    }
+
+  </script>
+</body>
+
+</html>
